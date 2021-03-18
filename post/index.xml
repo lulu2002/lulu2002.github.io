@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>大頭雜七雜八</title>
-    <link>https://lulu2002.github.io/</link>
-    <description>Recent content on 大頭雜七雜八</description>
+    <title>Posts on 大頭雜七雜八</title>
+    <link>https://lulu2002.github.io/post/</link>
+    <description>Recent content in Posts on 大頭雜七雜八</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 18 Mar 2021 12:47:33 +0800</lastBuildDate><atom:link href="https://lulu2002.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Mar 2021 12:47:33 +0800</lastBuildDate><atom:link href="https://lulu2002.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kotlin Getter/Setter 跟 Java 比較</title>
       <link>https://lulu2002.github.io/post/kotlin-java-gettersetter/</link>
@@ -18,26 +18,6 @@ Java 原版 Getter/Setter
 public class GetterSetter { private String hello; public String getHello() { return hello; } public GetterSetter setHello(String hello) { this.hello = hello; return this; } } 透過 Lombok 幫忙後的 Code
 public class GetterSetter { @Getter @Setter private String hello; } 這都是熟悉的 Java getter/setter，可以看到如果沒有 lombok 的幫忙，一個 class 中會充滿一堆沒有意義的 getter/setter method，像一篇廢話一堆，而重點不過就那幾個的文章。
 當然，有了 lombok 的幫助後，確實可以幫助你節省程式碼， 然而今天若要在 set value 時加上一點偵測，例如一些參數的轉換&amp;hellip;等， 難免需要自己手刻 setter，表面上聽起來沒什麼不好，不過是一個 method 而已， 但請你想一想，如果今天這個 class 很大，這個 setter method 是不是得要被排到很後面的地方？ 當然這影響可能沒有很大，然而在 Kotlin，你可以用更快、更一目了然的方式完成這個東西！</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://lulu2002.github.io/top/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://lulu2002.github.io/top/about/</guid>
-      <description>Huabing Zhao is an ICT veteran with a passion for open source. He has a solid experience in the telecommunication and information technology industry for more than 17 years.
-Throughout his career, he has built a number of large-scale, cross-country OSS/BSS platforms/systems and operation tools, most of them are still running in productions.
-He loves open source and has been contributing to a variety of open source projects, including Istio(Service Mesh https://istio.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://lulu2002.github.io/top/books/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://lulu2002.github.io/top/books/</guid>
-      <description>Machine learning学习笔记 Coursera 在线课程 Machine learning 笔记 讲师: 吴恩达(Andrew Ng)  课程地址：https://www.coursera.org/learn/machine-learning</description>
     </item>
     
   </channel>

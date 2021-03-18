@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-	<meta name="generator" content="Hugo 0.81.0" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,9 +15,9 @@
     
 
     
-    <meta name="title" content="大頭雜七雜八" />
-    <meta property="og:title" content="大頭雜七雜八" />
-    <meta property="twitter:title" content="大頭雜七雜八" />
+    <meta name="title" content="Kotlin Getter/Setter 跟 Java 比較" />
+    <meta property="og:title" content="Kotlin Getter/Setter 跟 Java 比較" />
+    <meta property="twitter:title" content="Kotlin Getter/Setter 跟 Java 比較" />
     
 
     
@@ -35,9 +34,9 @@
     <meta name="keyword"  content="Java, Minecraft Plugins, Baseball, Code, 魯魯部落格, 大頭部落格">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>大頭雜七雜八-大頭雜七雜八</title>
+    <title>Kotlin Getter/Setter 跟 Java 比較-大頭雜七雜八</title>
 
-    <link rel="canonical" href="/">
+    <link rel="canonical" href="/post/kotlin-java-gettersetter/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -141,14 +140,33 @@
 
 
 
-<header class="intro-header" style="background-image: url('/images/hero-image.png')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/images/hero-image.png')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>大頭雜七雜八 </h1>
-                    
-		    <span class="subheading">$ grep -rni &#34;The how&#39;s and why&#39;s&#34; .</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Kotlin Getter/Setter 跟 Java 比較</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                大頭雜七雜八
+                         
+                        on 
+                        Thursday, March 18, 2021
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -157,138 +175,107 @@
 
 
 
-  
-<div class="container">
-    <div class="row">
-        
-        
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
-            
 
-<div class="post-preview">
-    <a href="https://lulu2002.github.io/post/kotlin-java-gettersetter/">
-        <h2 class="post-title">
-            Kotlin Getter/Setter 跟 Java 比較
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            今天學到關於 kotlin 怎麼為變數新增 getter/setter 的方式，不得不說，真的跟 Java 比起來天差地遠，先上比較圖
-Java 原版 Getter/Setter
-public class GetterSetter { private String hello; public String getHello() { return hello; } public GetterSetter setHello(String hello) { this.hello = hello; return this; } } 透過 Lombok 幫忙後的 Code
-public class GetterSetter { @Getter @Setter private String hello; } 這都是熟悉的 Java getter/setter，可以看到如果沒有 lombok 的幫忙，一個 class 中會充滿一堆沒有意義的 getter/setter method，像一篇廢話一堆，而重點不過就那幾個的文章。
-當然，有了 lombok 的幫助後，確實可以幫助你節省程式碼， 然而今天若要在 set value 時加上一點偵測，例如一些參數的轉換&hellip;等， 難免需要自己手刻 setter，表面上聽起來沒什麼不好，不過是一個 method 而已， 但請你想一想，如果今天這個 class 很大，這個 setter method 是不是得要被排到很後面的地方？ 當然這影響可能沒有很大，然而在 Kotlin，你可以用更快、更一目了然的方式完成這個東西！
-       
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <p>今天學到關於 kotlin 怎麼為變數新增 getter/setter 的方式，不得不說，真的跟 Java 比起來天差地遠，先上比較圖</p>
+<p>Java 原版 Getter/Setter</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GetterSetter</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> String hello<span style="color:#f92672">;</span>
+
+
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getHello</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> hello<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> GetterSetter <span style="color:#a6e22e">setHello</span><span style="color:#f92672">(</span>String hello<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> hello<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>透過 Lombok 幫忙後的 Code</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GetterSetter</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@Getter</span>
+    <span style="color:#a6e22e">@Setter</span>
+    <span style="color:#66d9ef">private</span> String hello<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><p>這都是熟悉的 Java getter/setter，可以看到如果沒有 lombok 的幫忙，一個 class 中會充滿一堆沒有意義的 getter/setter method，像一篇廢話一堆，而重點不過就那幾個的文章。</p>
+<p>當然，有了 lombok 的幫助後，確實可以幫助你節省程式碼，
+<strong>然而今天若要在 set value 時加上一點偵測，例如一些參數的轉換&hellip;等</strong>，
+難免需要自己手刻 setter，表面上聽起來沒什麼不好，不過是一個 method 而已，
+但請你想一想，如果今天這個 class 很大，這個 setter method 是不是得要被排到很後面的地方？
+當然這影響可能沒有很大，然而在 Kotlin，你可以用更快、更一目了然的方式完成這個東西！</p>
+<p>一樣，先上 Code</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SetterExample</span>(name: String) {
+
+    <span style="color:#66d9ef">var</span> name: String = name
+        <span style="color:#66d9ef">get</span>() = name
+        <span style="color:#66d9ef">set</span>(value) {
+            <span style="color:#66d9ef">field</span> = value
+        }
+
+}
+</code></pre></div><p>可以看到，Kotlin 的 Getter/Setter 與 Java 有兩點很大的不同:</p>
+<ul>
+<li>get set 直接定義在變數下方，<strong>不用額外寫一個 method</strong>，看 code 時一目了然這個變數可以怎麼設定、怎麼存取</li>
+<li>如果今天沒有寫任何 getter setter，Kotlin 會自動幫你創一個
+(等於說，Kotlin 不允許你直接存取變數，一定要透過 getter 來獲取，
+只是預設的 getter 沒有任何邏輯，所以看起來才會像是直接存取)</li>
+</ul>
+<p>比起 Java 還需要自己寫 getter/setter，Kotlin 這種寫法不但因為更直觀而大幅增加可讀性，
+也不用自己用 lombok 去設定 getter setter 了，系統都會自動幫你處理好！</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
         </div>
-    </a>
-    <p class="post-meta">
-    Posted by 大頭雜七雜八 Thursday, March 18, 2021
-    
-    
-    </p>
-
-</div>
-<hr>
-
-
-            
-
-
-
-       	</div>
-        
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-  
-  
-  <section>
-    <hr class="hidden-sm hidden-xs">
-    <h5>FEATURED TAGS</h5>
-    <div class="tags">
-      
-      
     </div>
-  </section>
-  
-
-  
-  
-  <section class="visible-md visible-lg">
-    <hr>
-    <h5><a href="/top/about">ABOUT ME</a></h5>
-    <div class="short-about">
-      
-      <a href="/top/about">
-      <img src="/images/head.jpg" alt="avatar" style="cursor: pointer"/>
-      </a>
-      
-      
-      <p>熱愛透過程式來創作的熱血棒球青年</p>
-      
-      
-      <ul class="list-inline">
-        
-        
-        
-        
-        
-        
-        
-        <li>
-          <a target="_blank" href="https://github.com/lulu2002">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                       </span>
-          </a>
-        </li>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <li>
-          <a target="_blank" href="https://www.spigotmc.org/members/lu__lu.401111/">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fas fa-faucet fa-stack-1x fa-inverse"></i>
-                       </span>
-          </a>
-        </li>
-        
-      </ul>
-    </div>
-  </section>
-  
-  
-  
-
-  
-  
-</div>
-
-	</div>
-</div>
-
+</article>
 
 
 
