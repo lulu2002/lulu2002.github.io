@@ -17,7 +17,7 @@
 Java 原版 Getter/Setter
 public class GetterSetter { private String hello; public String getHello() { return hello; } public GetterSetter setHello(String hello) { this.hello = hello; return this; } } 透過 Lombok 幫忙後的 Code
 public class GetterSetter { @Getter @Setter private String hello; } 這都是熟悉的 Java getter/setter，可以看到如果沒有 lombok 的幫忙，一個 class 中會充滿一堆沒有意義的 getter/setter method，像一篇廢話一堆，而重點不過就那幾個的文章。
-當然，有了 lombok 的幫助後，確實可以幫助你節省程式碼， 然而今天若要在 set value 時加上一點偵測，例如一些參數的轉換&amp;hellip;等， 難免需要自己手刻 setter，表面上聽起來沒什麼不好，不過是一個 method 而已， 但請你想一想，如果今天這個 class 很大，這個 setter method 是不是得要被排到很後面的地方？ 當然這影響可能沒有很大，然而在 Kotlin，你可以用更快、更一目了然的方式完成這個東西！</description>
+當然，有了 lombok 的幫助後，確實可以幫助你節省程式碼，嗨 然而今天若要在 set value 時加上一點偵測，例如一些參數的轉換&amp;hellip;等， 難免需要自己手刻 setter，表面上聽起來沒什麼不好，不過是一個 method 而已， 但請你想一想，如果今天這個 class 很大，這個 setter method 是不是得要被排到很後面的地方？ 當然這影響可能沒有很大，然而在 Kotlin，你可以用更快、更一目了然的方式完成這個東西！</description>
     </item>
     
     <item>
